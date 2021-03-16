@@ -7,15 +7,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
-// Material imports
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from "@angular/material/card";
-import { MatListModule } from "@angular/material/list";
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MaterialModule } from "./modules/material.module";
 
 @NgModule({
   declarations: [
@@ -27,14 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatListModule,
-    MatInputModule,
-    MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
