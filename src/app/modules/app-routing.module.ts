@@ -4,7 +4,9 @@ import { CourseSelectComponent } from '../components/course-select/course-select
 import { CourseSettingsComponent } from '../components/course-settings/course-settings.component';
 
 const routes: Routes = [
-  { path: 'courses', component: CourseSelectComponent }
+  { path: '', redirectTo: 'courses', pathMatch: 'full' },
+  { path: 'courses', component: CourseSelectComponent },
+  { path: 'settings/:id', component: CourseSettingsComponent }
 ];
 
 @NgModule({

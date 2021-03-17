@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseDataService } from 'src/app/services/course-data.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class CourseSelectComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataService.sendGetRequest().subscribe((data: any[]) => {
+    this.dataService.sendGetRequest().subscribe((data: any[]) => { // grabs courses from service
       console.log(data);
       this.courses = data;
     })
