@@ -8,11 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from "./modules/material.module";
+import { HttpClientModule } from '@angular/common/http';
+import { CourseSettingsComponent } from './components/course-settings/course-settings.component';
+import { CourseSelectComponent } from './components/course-select/course-select.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    CourseSettingsComponent,
+    CourseSelectComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +25,8 @@ import { MaterialModule } from "./modules/material.module";
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

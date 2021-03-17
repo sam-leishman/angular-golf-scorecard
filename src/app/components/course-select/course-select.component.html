@@ -1,0 +1,6 @@
+<mat-card class="courses-display" *ngFor="let object of courses | keyvalue">
+    <div *ngFor="let course of object.value">
+        <img src={{course.image}} alt={{course.name}}>
+        <h2>{{ course.name }}</h2>
+    </div>
+</mat-card>

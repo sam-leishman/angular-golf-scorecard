@@ -1,0 +1,35 @@
+.courses-display {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    div {
+        position: relative;
+
+        img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+
+            transition: all 100ms ease-out;
+        }
+
+        h2 {
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+            color: white;
+            text-shadow: 5px 5px 10px black;
+
+            transition: all 100ms ease-out;
+        }
+
+        &:hover h2 {
+            font-size: 30px;
+        }
+
+        &:hover img {
+            opacity: 75%;
+        }
+    }
+}
