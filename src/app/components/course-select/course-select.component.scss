@@ -33,3 +33,19 @@
         }
     }
 }
+
+@media (max-width: 1000px) {
+
+    .courses-display {
+        flex-direction: column;
+
+        div {
+            width: 100%;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+}
