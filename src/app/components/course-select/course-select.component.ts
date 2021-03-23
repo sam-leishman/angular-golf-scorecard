@@ -15,7 +15,6 @@ export class CourseSelectComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.sendGetRequest().subscribe((data: any[]) => { // grabs courses from service
-      console.log(data);
       this.courses = data;
     })
   }

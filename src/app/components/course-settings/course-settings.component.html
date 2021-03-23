@@ -1,4 +1,40 @@
 <h2>Course Settings</h2>
-<mat-card>
-    <h3>{{ courseData }}</h3>
+<mat-card *ngIf="courseData">
+    <h3>{{ courseData.data.name }}</h3>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+
+        <!-- <section>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Holes" formControlName="holes" required>
+                <mat-error *ngIf="form.get('holes').hasError('required')">
+                    Amount of holes needs to be specified
+                </mat-error>
+            </mat-form-field>
+        </section> -->
+
+        <section>
+            <mat-form-field appearance="fill">
+                <mat-label>Holes</mat-label>
+                <mat-select formControlName="holes" required>
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let holes of availableHoles" [value]="holes">
+                        {{ holes }}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('holes').hasError('required')">
+                    Amount of holes needs to be specified
+                </mat-error>
+            </mat-form-field>
+        </section>
+
+        <!-- <section>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Teebox" formControlName="teeBoxes" required>
+                <mat-error *ngIf="form.get('teeBoxes').hasError('required')">
+                    Teebox needs to be specified
+                </mat-error>
+            </mat-form-field>
+        </section> -->
+
+    </form>
 </mat-card>
