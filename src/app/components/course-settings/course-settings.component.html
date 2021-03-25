@@ -1,40 +1,86 @@
 <h2>Course Settings</h2>
 <mat-card *ngIf="courseData">
     <h3>{{ courseData.data.name }}</h3>
-    <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <form [formGroup]="form" (ngSubmit)="submitForm()" #settingsForm="ngForm">
 
-        <!-- <section>
-            <mat-form-field>
-                <input matInput type="text" placeholder="Holes" formControlName="holes" required>
-                <mat-error *ngIf="form.get('holes').hasError('required')">
-                    Amount of holes needs to be specified
-                </mat-error>
-            </mat-form-field>
-        </section> -->
+        <div class="flex-settings">
+            <div class="holes-teeboxes">
+                <section>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Holes</mat-label>
+                        <mat-select formControlName="holes" required>
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let holes of availableHoles" [value]="holes">
+                                {{ holes }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.get('holes').hasError('required')">
+                            Amount of holes needs to be specified
+                        </mat-error>
+                    </mat-form-field>
+                </section>
 
-        <section>
-            <mat-form-field appearance="fill">
-                <mat-label>Holes</mat-label>
-                <mat-select formControlName="holes" required>
-                    <mat-option>--</mat-option>
-                    <mat-option *ngFor="let holes of availableHoles" [value]="holes">
-                        {{ holes }}
-                    </mat-option>
-                </mat-select>
-                <mat-error *ngIf="form.get('holes').hasError('required')">
-                    Amount of holes needs to be specified
-                </mat-error>
-            </mat-form-field>
-        </section>
+                <section>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Teebox</mat-label>
+                        <mat-select formControlName="teebox" required>
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let availableTeebox of courseData.data.holes[0].teeBoxes" [value]="availableTeebox">
+                                {{ availableTeebox.teeType }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.get('teebox').hasError('required')">
+                            Teebox needs to be specified
+                        </mat-error>
+                    </mat-form-field>
+                </section>
+            </div>
 
-        <!-- <section>
-            <mat-form-field>
-                <input matInput type="text" placeholder="Teebox" formControlName="teeBoxes" required>
-                <mat-error *ngIf="form.get('teeBoxes').hasError('required')">
-                    Teebox needs to be specified
-                </mat-error>
-            </mat-form-field>
-        </section> -->
+            <div class="player-names">
+
+                <section>
+                    <mat-form-field>
+                        <input matInput type="text" placeholder="Player 1 Name" formControlName="player1">
+                        <!-- <mat-error *ngIf="form.get('holes').hasError('required')">
+                                Name is already taken
+                            </mat-error> -->
+                    </mat-form-field>
+                </section>
+                
+                <section>
+                    <mat-form-field>
+                        <input matInput type="text" placeholder="Player 2 Name" formControlName="player2">
+                        <!-- <mat-error *ngIf="form.get('holes').hasError('required')">
+                                Name is already taken
+                            </mat-error> -->
+                    </mat-form-field>
+                </section>
+                
+                <section>
+                    <mat-form-field>
+                        <input matInput type="text" placeholder="Player 3 Name" formControlName="player3">
+                        <!-- <mat-error *ngIf="form.get('holes').hasError('required')">
+                                Name is already taken
+                            </mat-error> -->
+                    </mat-form-field>
+                </section>
+                
+                <section>
+                    <mat-form-field>
+                        <input matInput type="text" placeholder="Player 4 Name" formControlName="player4">
+                        <!-- <mat-error *ngIf="form.get('holes').hasError('required')">
+                                Name is already taken
+                            </mat-error> -->
+                    </mat-form-field>
+                </section>
+                
+            </div>
+
+        </div>
+
+        <div class="submit-div">
+            <button mat-raised-button type="submit" [disabled]="settingsForm.invalid">Submit</button>
+        </div>
 
     </form>
 </mat-card>

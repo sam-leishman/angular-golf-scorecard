@@ -25,7 +25,7 @@ export class CourseSettingsComponent implements OnInit {
 
     this.form = fb.group({
       holes: [''],
-      teeBoxes: [''],
+      teebox: [''],
       player1: [''],
       player2: [''],
       player3: [''],
@@ -40,6 +40,10 @@ export class CourseSettingsComponent implements OnInit {
       console.log(data);
       this.courseData = data;
     })
+  }
+
+  submitForm() {
+    console.log(this.form.value)
   }
 
 }
