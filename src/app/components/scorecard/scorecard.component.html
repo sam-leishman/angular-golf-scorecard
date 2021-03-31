@@ -31,16 +31,12 @@
             <td></td>
         </tr>
 
-        <tr class="playerRow" *ngFor="let player of players">
-            <th>{{ player }}</th>
-            <td *ngFor="let holeData of courseData.data.holes | slice:0:9; let i = index">
-                <span *ngIf="i < holeAmount">
-                    <!-- <input type="number" [(ngModel)]="player[holeData.hole]"> -->
-                    (input)
-                </span>
+        <tr *ngFor="let player of players">
+            <th>{{ player.name }}</th>
+            <td *ngFor="let hole of playerHoles | slice:0:9">
+                <input type="number" [(ngModel)]="player[hole]">
             </td>
-            <!-- <td>{{getTotalOut(player)}}</td> -->
-            <td>(out total)</td>
+            <td>{{getTotalOut(player)}}</td>
         </tr>
 
         <tr>
@@ -88,14 +84,12 @@
             <td></td>
         </tr>
 
-        <tr class="playerRow" *ngFor="let player of players">
-            <th>{{ player }}</th>
-            <td *ngFor="let holeData of courseData.data.holes | slice:9:18; let i = index">
-                <span *ngIf="i < holeAmount">
-                    (input)
-                </span>
+        <tr *ngFor="let player of players">
+            <th>{{ player.name }}</th>
+            <td *ngFor="let hole of playerHoles | slice:9:18">
+                <input type="number" [(ngModel)]="player[hole]">
             </td>
-            <td>(in total)</td>
+            <td>{{getTotalIn(player)}}</td>
         </tr>
 
         <tr>
