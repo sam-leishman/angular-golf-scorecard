@@ -11,13 +11,15 @@ import { MaterialModule } from "./modules/material.module";
 import { HttpClientModule } from '@angular/common/http';
 import { CourseSettingsComponent } from './components/course-settings/course-settings.component';
 import { CourseSelectComponent } from './components/course-select/course-select.component';
+import { ScorecardComponent } from './components/scorecard/scorecard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     CourseSettingsComponent,
-    CourseSelectComponent
+    CourseSelectComponent,
+    ScorecardComponent
   ],
   imports: [
     BrowserModule,

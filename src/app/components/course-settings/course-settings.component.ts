@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CourseDataService } from 'src/app/services/course-data.service';
+import { PlayerSettingsService } from 'src/app/services/player-settings.service';
 
 @Component({
   selector: 'app-course-settings',
@@ -19,7 +20,8 @@ export class CourseSettingsComponent implements OnInit {
   constructor(
     private actRoute: ActivatedRoute,
     private courseDataService: CourseDataService,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private playerSettingsService: PlayerSettingsService
     ) {
     this.courseId = this.actRoute.snapshot.params.id;
 
@@ -37,13 +39,13 @@ export class CourseSettingsComponent implements OnInit {
     this.courseDataService.getId(this.courseId); // sends course id to the service so it can make API call
 
     this.courseDataService.sendGetRequest().subscribe((data: any[]) => { // grabs course data from service
-      console.log(data);
+      console.log(data)
       this.courseData = data;
     })
   }
 
   submitForm() {
-    console.log(this.form.value)
+    this.playerSettingsService.playerSettings = this.form.value;
   }
 
 }

@@ -1,7 +1,7 @@
 <h2>Course Settings</h2>
 <mat-card *ngIf="courseData">
     <h3>{{ courseData.data.name }}</h3>
-    <form [formGroup]="form" (ngSubmit)="submitForm()" #settingsForm="ngForm">
+    <form [formGroup]="form" #settingsForm="ngForm">
 
         <div class="flex-settings">
             <div class="holes-teeboxes">
@@ -25,7 +25,7 @@
                         <mat-label>Teebox</mat-label>
                         <mat-select formControlName="teebox" required>
                             <mat-option>--</mat-option>
-                            <mat-option *ngFor="let availableTeebox of courseData.data.holes[0].teeBoxes" [value]="availableTeebox">
+                            <mat-option *ngFor="let availableTeebox of courseData.data.holes[0].teeBoxes" [value]="availableTeebox.teeTypeId">
                                 {{ availableTeebox.teeType }}
                             </mat-option>
                         </mat-select>
@@ -79,7 +79,15 @@
         </div>
 
         <div class="submit-div">
-            <button mat-raised-button type="submit" [disabled]="settingsForm.invalid">Submit</button>
+            <button
+                mat-raised-button
+                type="button"
+                (click)="submitForm()"
+                [disabled]="settingsForm.invalid"
+                [routerLink]="['/scorecard/', courseId]"
+            >
+            Submit
+            </button>
         </div>
 
     </form>

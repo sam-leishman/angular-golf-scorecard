@@ -1,0 +1,19 @@
+.scorecard {
+    overflow-x: scroll;
+
+    table {
+        border: 3px solid black;
+        border-collapse: collapse;
+        margin: 10px;
+
+        th, td {
+            border: 1px solid gray;
+            min-width: 75px;
+            padding: 10px;
+        }
+
+        .playerRow {
+            background-color: lightblue;
+        }
+    }
+}

@@ -1,0 +1,100 @@
+<mat-card *ngIf="courseData" class="scorecard">
+    <table>
+
+        <tr>
+            <th>Holes</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:0:9; let i = index">
+                <span *ngIf="i < holeAmount">
+                    {{ holeData.hole }}
+                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Yards</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:0:9; let i = index">
+                <span *ngIf="i < holeAmount">
+                    {{ holeData.teeBoxes[teebox].yards }}
+                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Handicap</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:0:9; let i = index">
+                <span *ngIf="i < holeAmount">
+                    {{ holeData.teeBoxes[teebox].hcp }}
+                </span>
+            </td>
+        </tr>
+
+        <tr class="playerRow" *ngFor="let player of players">
+            <th>{{ player }}</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:0:9; let i = index">
+                <span *ngIf="i < holeAmount">
+                    placeholder
+                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Par</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:0:9; let i = index">
+                <span *ngIf="i < holeAmount">
+                    {{ holeData.teeBoxes[teebox].par }}
+                </span>
+            </td>
+        </tr>
+
+    </table>
+
+    <!-- holes 10-18 -->
+    <table *ngIf="holeAmount === 18">
+
+        <tr>
+            <th>Holes</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:9:18; let i = index">
+                <span *ngIf="i < holeAmount">
+                    {{ holeData.hole }}
+                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Yards</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:9:18; let i = index">
+                <span *ngIf="i < holeAmount">
+                    {{ holeData.teeBoxes[teebox].yards }}
+                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Handicap</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:9:18; let i = index">
+                <span *ngIf="i < holeAmount">
+                    {{ holeData.teeBoxes[teebox].hcp }}
+                </span>
+            </td>
+        </tr>
+
+        <tr class="playerRow" *ngFor="let player of players">
+            <th>{{ player }}</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:9:18; let i = index">
+                <span *ngIf="i < holeAmount">
+                    placeholder
+                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <th>Par</th>
+            <td *ngFor="let holeData of courseData.data.holes | slice:9:18; let i = index">
+                <span *ngIf="i < holeAmount">
+                    {{ holeData.teeBoxes[teebox].par }}
+                </span>
+            </td>
+        </tr>
+
+    </table>
+</mat-card>
