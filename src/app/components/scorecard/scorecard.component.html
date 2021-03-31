@@ -8,6 +8,7 @@
                     {{ holeData.hole }}
                 </span>
             </td>
+            <td>OUT</td>
         </tr>
 
         <tr>
@@ -17,6 +18,7 @@
                     {{ holeData.teeBoxes[teebox].yards }}
                 </span>
             </td>
+            <td>(out yards)</td>
         </tr>
 
         <tr>
@@ -26,15 +28,19 @@
                     {{ holeData.teeBoxes[teebox].hcp }}
                 </span>
             </td>
+            <td></td>
         </tr>
 
         <tr class="playerRow" *ngFor="let player of players">
             <th>{{ player }}</th>
             <td *ngFor="let holeData of courseData.data.holes | slice:0:9; let i = index">
                 <span *ngIf="i < holeAmount">
-                    placeholder
+                    <!-- <input type="number" [(ngModel)]="player[holeData.hole]"> -->
+                    (input)
                 </span>
             </td>
+            <!-- <td>{{getTotalOut(player)}}</td> -->
+            <td>(out total)</td>
         </tr>
 
         <tr>
@@ -44,6 +50,7 @@
                     {{ holeData.teeBoxes[teebox].par }}
                 </span>
             </td>
+            <td>(out par)</td>
         </tr>
 
     </table>
@@ -58,6 +65,7 @@
                     {{ holeData.hole }}
                 </span>
             </td>
+            <td>IN</td>
         </tr>
 
         <tr>
@@ -67,6 +75,7 @@
                     {{ holeData.teeBoxes[teebox].yards }}
                 </span>
             </td>
+            <td>(in yards)</td>
         </tr>
 
         <tr>
@@ -76,15 +85,17 @@
                     {{ holeData.teeBoxes[teebox].hcp }}
                 </span>
             </td>
+            <td></td>
         </tr>
 
         <tr class="playerRow" *ngFor="let player of players">
             <th>{{ player }}</th>
             <td *ngFor="let holeData of courseData.data.holes | slice:9:18; let i = index">
                 <span *ngIf="i < holeAmount">
-                    placeholder
+                    (input)
                 </span>
             </td>
+            <td>(in total)</td>
         </tr>
 
         <tr>
@@ -94,6 +105,7 @@
                     {{ holeData.teeBoxes[teebox].par }}
                 </span>
             </td>
+            <td>(in par)</td>
         </tr>
 
     </table>

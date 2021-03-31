@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseDataService } from 'src/app/services/course-data.service';
 import { PlayerSettingsService } from 'src/app/services/player-settings.service';
 
@@ -18,6 +18,7 @@ export class ScorecardComponent implements OnInit {
   players = [];
 
   constructor(
+    private route: Router,
     private actRoute: ActivatedRoute,
     private playerSettingsService: PlayerSettingsService,
     private courseDataService: CourseDataService
@@ -33,23 +34,31 @@ export class ScorecardComponent implements OnInit {
       this.courseData = data;
     })
 
-    console.log(this.playerSettingsService.playerSettings)
-    this.courseData = this.courseDataService;
-    this.holeAmount = this.playerSettingsService.playerSettings.holes;
-    this.teebox = this.playerSettingsService.playerSettings.teebox - 1;
+    if (this.playerSettingsService.playerSettings == undefined) {
+      this.route.navigate(['/settings/', this.courseId])
+    } else {
+      this.courseData = this.courseDataService;
+      this.holeAmount = this.playerSettingsService.playerSettings.holes;
+      this.teebox = this.playerSettingsService.playerSettings.teebox - 1;
 
-    if (this.playerSettingsService.playerSettings.player1 != '') {
-      this.players.push(this.playerSettingsService.playerSettings.player1)
+      if (this.playerSettingsService.playerSettings.player1 != '') {
+        this.players.push(this.playerSettingsService.playerSettings.player1)
+      }
+      if (this.playerSettingsService.playerSettings.player2 != '') {
+        this.players.push(this.playerSettingsService.playerSettings.player2)
+      }
+      if (this.playerSettingsService.playerSettings.player3 != '') {
+        this.players.push(this.playerSettingsService.playerSettings.player3)
+      }
+      if (this.playerSettingsService.playerSettings.player4 != '') {
+        this.players.push(this.playerSettingsService.playerSettings.player4)
+      }
     }
-    if (this.playerSettingsService.playerSettings.player2 != '') {
-      this.players.push(this.playerSettingsService.playerSettings.player2)
-    }
-    if (this.playerSettingsService.playerSettings.player3 != '') {
-      this.players.push(this.playerSettingsService.playerSettings.player3)
-    }
-    if (this.playerSettingsService.playerSettings.player4 != '') {
-      this.players.push(this.playerSettingsService.playerSettings.player4)
-    }
+
   }
+
+  // getTotalOut(player): number {
+  //   return player.hole1 + player.hole2 + player.hole3 + player.hole4 + player.hole5 + player.hole6 + player.hole7 + player.hole8 + player.hole9;
+  // }
 
 }
