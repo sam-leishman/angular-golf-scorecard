@@ -142,6 +142,66 @@ export class ScorecardComponent implements OnInit {
 
   }
 
+  // yards
+
+  getTotalOutYards(): number {
+    let holesArr = this.courseData.data.holes;
+    let totalYards = 0;
+    for (let i = 0; i < 9; i++) {
+      totalYards += holesArr[i].teeBoxes[this.teebox].yards;
+    }
+    return totalYards;
+  }
+
+  getTotalInYards(): number {
+    let holesArr = this.courseData.data.holes;
+    let totalYards = 0;
+    for (let i = 9; i < 18; i++) {
+      totalYards += holesArr[i].teeBoxes[this.teebox].yards;
+    }
+    return totalYards;
+  }
+
+  // getTotalYards(): number {
+  //   let holesArr = this.courseData.data.holes;
+  //   let totalYards = 0;
+  //   for (let i = 0; i < holesArr.length; i++) {
+  //     totalYards += holesArr[i].teeBoxes[this.teebox].yards;
+  //   }
+  //   return totalYards;
+  // }
+
+  // par
+
+  getTotalOutPar(): number {
+    let holesArr = this.courseData.data.holes;
+    let totalPar = 0;
+    for (let i = 0; i < 9; i++) {
+      totalPar += holesArr[i].teeBoxes[this.teebox].par;
+    }
+    return totalPar;
+  }
+
+  getTotalInPar(): number {
+    let holesArr = this.courseData.data.holes;
+    let totalPar = 0;
+    for (let i = 9; i < 18; i++) {
+      totalPar += holesArr[i].teeBoxes[this.teebox].par;
+    }
+    return totalPar;
+  }
+
+  getTotalPar(): number {
+    let holesArr = this.courseData.data.holes;
+    let totalPar = 0;
+    for (let i = 0; i < holesArr.length; i++) {
+      totalPar += holesArr[i].teeBoxes[this.teebox].par;
+    }
+    return totalPar;
+  }
+
+  // player score
+
   getTotalOut(player: Player): number {
     return player.hole1 + player.hole2 + player.hole3 + player.hole4 + player.hole5 + player.hole6 + player.hole7 + player.hole8 + player.hole9;
   }
@@ -153,6 +213,8 @@ export class ScorecardComponent implements OnInit {
   getTotal(player: Player): number {
     return player.hole1 + player.hole2 + player.hole3 + player.hole4 + player.hole5 + player.hole6 + player.hole7 + player.hole8 + player.hole9 + player.hole10 + player.hole11 + player.hole12 + player.hole13 + player.hole14 + player.hole15 + player.hole16 + player.hole17 + player.hole18;
   }
+
+
 
   finishCard() {
     this.displayTable = true;
