@@ -103,4 +103,23 @@
         </tr>
 
     </table>
+
 </mat-card>
+
+<div class="totalDiv">
+    <button *ngIf="!displayTable" mat-raised-button (click)="finishCard()">Finish</button>
+
+    <table *ngIf="displayTable" class="totalTable">
+
+        <tr>
+            <th>Player</th>
+            <th>Total</th>
+        </tr>
+
+        <tr *ngFor="let player of players">
+            <td>{{ player.name }}</td>
+            <td>{{ getTotal(player) }}</td>
+        </tr>
+
+    </table>
+</div>

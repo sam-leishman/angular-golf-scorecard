@@ -11,5 +11,29 @@
             min-width: 75px;
             padding: 10px;
         }
+
+        input {
+            border: none;
+            width: 100%;
+        }
+    }
+}
+
+.totalDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+
+    .totalTable {
+        margin: auto;
+        border: 3px solid black;
+        border-collapse: collapse;
+
+        th, td {
+            border: 1px solid gray;
+            min-width: 75px;
+            padding: 10px;
+        }
     }
 }
