@@ -46,4 +46,13 @@
             color: red;
         }
     }
+
+    .playerMessages {
+        display: flex;
+        justify-content: center;
+
+        .playerMessage {
+            margin: 15px;
+        }
+    }
 }

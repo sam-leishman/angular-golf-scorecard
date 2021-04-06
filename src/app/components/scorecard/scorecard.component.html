@@ -136,6 +136,12 @@
         </table>
     
         <h2>Take a screenshot and share your awesome (or terrible) scores with your friends!</h2>
+
+        <div class="playerMessages" *ngFor="let player of players">
+            <h3 class="playerMessage">{{ player.message }}</h3>
+        </div>
+        
+
     </div>
 
 </div>

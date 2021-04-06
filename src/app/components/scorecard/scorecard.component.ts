@@ -229,8 +229,10 @@ export class ScorecardComponent implements OnInit {
 
     if ((playerTotal - totalPar) <= 0) {
       this.isUnder = true;
+      player.message = `Nice job ${player.name}, you're under par!`
     } else {
       this.isUnder = false;
+      player.message = `Oof better luck next time ${player.name}`
     }
 
     return playerTotal;

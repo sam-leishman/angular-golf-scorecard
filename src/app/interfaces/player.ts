@@ -1,5 +1,6 @@
 export interface Player {
     name: string;
+    message?: string;
     hole1: number;
     hole2: number;
     hole3: number;
