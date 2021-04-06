@@ -18,6 +18,17 @@
     justify-content: center;
 }
 
+.title {
+    margin: 20px;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+h3 {
+    text-align: center;
+}
+
 @media (max-width: 600px) {
 
     .flex-settings {

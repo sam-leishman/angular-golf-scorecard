@@ -164,14 +164,14 @@ export class ScorecardComponent implements OnInit {
     return totalYards;
   }
 
-  // getTotalYards(): number {
-  //   let holesArr = this.courseData.data.holes;
-  //   let totalYards = 0;
-  //   for (let i = 0; i < holesArr.length; i++) {
-  //     totalYards += holesArr[i].teeBoxes[this.teebox].yards;
-  //   }
-  //   return totalYards;
-  // }
+  getTotalYards(): number {
+    let holesArr = this.courseData.data.holes;
+    let totalYards = 0;
+    for (let i = 0; i < holesArr.length; i++) {
+      totalYards += holesArr[i].teeBoxes[this.teebox].yards;
+    }
+    return totalYards;
+  }
 
   // par
 

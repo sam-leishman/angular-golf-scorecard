@@ -109,26 +109,33 @@
 <div class="totalDiv">
     <button *ngIf="!displayTable" mat-raised-button (click)="finishCard()">Finish</button>
 
-    <table *ngIf="displayTable" class="totalTable">
+    <div *ngIf="displayTable">
+        <table class="totalTable">
 
-        <tr>
-            <th colspan="2">Total</th>
-        </tr>
+            <tr>
+                <th colspan="2">Total</th>
+            </tr>
 
-        <tr *ngFor="let player of players">
-            <th>{{ player.name }}</th>
-            <td>{{ getTotal(player) }}</td>
-            <td class="noBorder" [ngClass]="isUnder ? 'under' : 'over'">{{ isUnder ? '' : '+' }}{{ getDifference(player) }}</td>
-        </tr>
-
-        <tr>
-            <th>Par</th>
-            <td id="totalPar" *ngIf="holeAmount == 9">{{ getTotalOutPar() }}</td>
-            <td id="totalPar" *ngIf="holeAmount == 18">{{ getTotalPar() }}</td>
-        </tr>
-
-    </table>
-
-    <!-- <p>Take a screenshot and share your awesome (or terrible) scores with your friends!</p> -->
+            <tr>
+                <th>Yards</th>
+                <td>{{ getTotalYards() }}</td>
+            </tr>
+    
+            <tr *ngFor="let player of players">
+                <th>{{ player.name }}</th>
+                <td>{{ getTotal(player) }}</td>
+                <td class="noBorder" [ngClass]="isUnder ? 'under' : 'over'">{{ isUnder ? '' : '+' }}{{ getDifference(player) }}</td>
+            </tr>
+    
+            <tr>
+                <th>Par</th>
+                <td id="totalPar" *ngIf="holeAmount == 9">{{ getTotalOutPar() }}</td>
+                <td id="totalPar" *ngIf="holeAmount == 18">{{ getTotalPar() }}</td>
+            </tr>
+    
+        </table>
+    
+        <h2>Take a screenshot and share your awesome (or terrible) scores with your friends!</h2>
+    </div>
 
 </div>
