@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseDataService } from 'src/app/services/course-data.service';
 import { PlayerSettingsService } from 'src/app/services/player-settings.service';
 
@@ -17,7 +17,10 @@ export class CourseSettingsComponent implements OnInit {
 
   availableHoles: any = [9, 18]
 
+  errorMessage: string;
+
   constructor(
+    private route: Router,
     private actRoute: ActivatedRoute,
     private courseDataService: CourseDataService,
     public fb: FormBuilder,
@@ -46,6 +49,16 @@ export class CourseSettingsComponent implements OnInit {
 
   submitForm() {
     this.playerSettingsService.playerSettings = this.form.value;
+
+    console.log(this.form.value)
+
+    if (this.form.value.player1 == '' && this.form.value.player2 == '' && this.form.value.player3 == '' && this.form.value.player4 == '') {
+      this.errorMessage = "There needs to be at least one player to play (duh)"
+    } else if (this.form.value.player1 == (this.form.value.player2 || this.form.value.player3 || this.form.value.player4) || this.form.value.player2 == (this.form.value.player1 || this.form.value.player3 || this.form.value.player4) || this.form.value.player3 == (this.form.value.player1 || this.form.value.player2 || this.form.value.player4)) {
+      this.errorMessage = "Players can't have the same name"
+    } else {
+      this.route.navigate(['/scorecard/', this.courseId])
+    }
   }
 
 }

@@ -15,7 +15,18 @@
 
 .submit-div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    button {
+        margin: 10px;
+    }
+
+    .errorMessage {
+        margin: 10px;
+        color: red;
+    }
 }
 
 .title {

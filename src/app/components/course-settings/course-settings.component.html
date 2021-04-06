@@ -84,10 +84,11 @@
                 type="button"
                 (click)="submitForm()"
                 [disabled]="settingsForm.invalid"
-                [routerLink]="['/scorecard/', courseId]"
             >
             Submit
             </button>
+
+            <span class="errorMessage">{{ errorMessage }}</span>
         </div>
 
     </form>
