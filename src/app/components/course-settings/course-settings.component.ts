@@ -42,15 +42,12 @@ export class CourseSettingsComponent implements OnInit {
     this.courseDataService.getId(this.courseId); // sends course id to the service so it can make API call
 
     this.courseDataService.sendGetRequest().subscribe((data: any[]) => { // grabs course data from service
-      console.log(data)
       this.courseData = data;
     })
   }
 
   submitForm() {
     this.playerSettingsService.playerSettings = this.form.value;
-
-    console.log(this.form.value)
 
     if (this.form.value.player1 == '' && this.form.value.player2 == '' && this.form.value.player3 == '' && this.form.value.player4 == '') {
       this.errorMessage = "There needs to be at least one player to play (duh)"

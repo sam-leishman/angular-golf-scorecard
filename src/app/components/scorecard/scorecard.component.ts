@@ -37,7 +37,6 @@ export class ScorecardComponent implements OnInit {
     this.courseDataService.getId(this.courseId);
 
     this.courseDataService.sendGetRequest().subscribe((data: any[]) => {
-      console.log(data);
       this.courseData = data;
     })
 
