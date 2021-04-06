@@ -1,4 +1,4 @@
-<mat-card *ngIf="courseData" class="scorecard">
+<mat-card *ngIf="courseData && !displayTable" class="scorecard">
     <table>
 
         <tr>
@@ -112,17 +112,23 @@
     <table *ngIf="displayTable" class="totalTable">
 
         <tr>
-            <th>Player</th>
-            <th>Total</th>
-            <th>Par</th>
+            <th colspan="2">Total</th>
         </tr>
 
         <tr *ngFor="let player of players">
-            <td>{{ player.name }}</td>
+            <th>{{ player.name }}</th>
             <td>{{ getTotal(player) }}</td>
-            <td *ngIf="holeAmount == 9">{{ getTotalOutPar() }}</td>
-            <td *ngIf="holeAmount == 18">{{ getTotalPar() }}</td>
+            <td class="noBorder" [ngClass]="isUnder ? 'under' : 'over'">{{ isUnder ? '' : '+' }}{{ getDifference(player) }}</td>
+        </tr>
+
+        <tr>
+            <th>Par</th>
+            <td id="totalPar" *ngIf="holeAmount == 9">{{ getTotalOutPar() }}</td>
+            <td id="totalPar" *ngIf="holeAmount == 18">{{ getTotalPar() }}</td>
         </tr>
 
     </table>
+
+    <!-- <p>Take a screenshot and share your awesome (or terrible) scores with your friends!</p> -->
+
 </div>

@@ -22,6 +22,8 @@ export class ScorecardComponent implements OnInit {
 
   displayTable: boolean = false;
 
+  isUnder: boolean;
+
   constructor(
     private route: Router,
     private actRoute: ActivatedRoute,
@@ -211,13 +213,54 @@ export class ScorecardComponent implements OnInit {
   }
 
   getTotal(player: Player): number {
-    return player.hole1 + player.hole2 + player.hole3 + player.hole4 + player.hole5 + player.hole6 + player.hole7 + player.hole8 + player.hole9 + player.hole10 + player.hole11 + player.hole12 + player.hole13 + player.hole14 + player.hole15 + player.hole16 + player.hole17 + player.hole18;
+
+    let playerTotal = player.hole1 + player.hole2 + player.hole3 + player.hole4 + player.hole5 + player.hole6 + player.hole7 + player.hole8 + player.hole9 + player.hole10 + player.hole11 + player.hole12 + player.hole13 + player.hole14 + player.hole15 + player.hole16 + player.hole17 + player.hole18;
+
+    let holesArr = this.courseData.data.holes;
+    let totalPar = 0;
+    if (this.holeAmount == 9) {
+      for (let i = 0; i < 9; i++) {
+        totalPar += holesArr[i].teeBoxes[this.teebox].par;
+      }
+    } else if (this.holeAmount == 18) {
+      for (let i = 0; i < holesArr.length; i++) {
+        totalPar += holesArr[i].teeBoxes[this.teebox].par;
+      }
+    }
+
+    if ((playerTotal - totalPar) <= 0) {
+      this.isUnder = true;
+    } else {
+      this.isUnder = false;
+    }
+
+    return playerTotal;
+    
   }
 
 
 
   finishCard() {
     this.displayTable = true;
+  }
+
+  getDifference(player: Player): number {
+
+    let holesArr = this.courseData.data.holes;
+    let totalPar = 0;
+    if (this.holeAmount == 9) {
+      for (let i = 0; i < 9; i++) {
+        totalPar += holesArr[i].teeBoxes[this.teebox].par;
+      }
+    } else if (this.holeAmount == 18) {
+      for (let i = 0; i < holesArr.length; i++) {
+        totalPar += holesArr[i].teeBoxes[this.teebox].par;
+      }
+    }
+
+    let playerTotal = player.hole1 + player.hole2 + player.hole3 + player.hole4 + player.hole5 + player.hole6 + player.hole7 + player.hole8 + player.hole9 + player.hole10 + player.hole11 + player.hole12 + player.hole13 + player.hole14 + player.hole15 + player.hole16 + player.hole17 + player.hole18;
+
+    return (playerTotal - totalPar);
   }
 
 }

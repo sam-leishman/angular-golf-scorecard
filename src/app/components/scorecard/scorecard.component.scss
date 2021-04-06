@@ -27,13 +27,24 @@
 
     .totalTable {
         margin: auto;
-        border: 3px solid black;
         border-collapse: collapse;
 
         th, td {
             border: 1px solid gray;
             min-width: 75px;
             padding: 10px;
+        }
+
+        .noBorder {
+            border: none;
+        }
+
+        .under {
+            color: green;
+        }
+
+        .over {
+            color: red;
         }
     }
 }
